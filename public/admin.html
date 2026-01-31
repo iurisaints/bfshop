@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Admin | Brenda</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="./styles/styles.css">
+    <style>
+        .admin-wrapper { max-width: 800px; margin: 40px auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; padding-bottom: 15px; border-bottom: 1px solid #eee; }
+        .product-list-item { display: flex; justify-content: space-between; align-items: center; background: #f8fafc; padding: 15px; margin-bottom: 10px; border-radius: 8px; border: 1px solid #e2e8f0; }
+        .product-info { display: flex; align-items: center; gap: 15px; }
+        .product-img { width: 50px; height: 50px; object-fit: cover; border-radius: 4px; background: #ddd; }
+        
+        /* Botões de Ação */
+        .actions { display: flex; gap: 10px; }
+        .btn-icon { width: 35px; height: 35px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.2s; border: none; }
+        .edit-btn { background: #e0f2fe; color: var(--blue-navy); }
+        .edit-btn:hover { background: var(--blue-navy); color: white; }
+        .delete-btn { background: #fee2e2; color: #ef4444; }
+        .delete-btn:hover { background: #ef4444; color: white; }
+
+        /* Botão Cancelar */
+        #btn-cancel { background: #ccc; color: #333; margin-top: 10px; width: 100%; border: none; padding: 10px; border-radius: 8px; cursor: pointer; font-weight: bold; }
+        #btn-cancel:hover { background: #bbb; }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">ÁREA RESTRITA - GERENCIAMENTO</div>
+
+    <div class="container">
+        <div class="admin-wrapper">
+            
+            <div class="admin-header">
+                <h2 style="color:var(--blue-navy);">Gerenciar Produtos</h2>
+                <a href="index.html" class="btn-buy" style="width:auto; padding:8px 20px; font-size:0.9rem; text-decoration:none;">
+                    <i class="fas fa-store"></i> Voltar à Loja
+                </a>
+            </div>
+
+            <div style="background: #f0f9ff; padding: 20px; border-radius: 10px; border: 1px solid #bae6fd; margin-bottom: 30px;">
+                <h3 id="form-title" style="color:var(--blue-navy); margin-bottom:15px; font-size:1.1rem;">+ Novo Produto</h3>
+                
+                <form id="product-form" onsubmit="handleProductSubmit(event)">
+                    <input type="hidden" id="p-id">
+
+                    <div class="form-group">
+                        <label>Título</label>
+                        <input type="text" id="p-title" required>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <div class="form-group">
+                            <label>Preço (R$)</label>
+                            <input type="number" id="p-price" step="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Categoria</label>
+                            <select id="p-category">
+                                <option value="Ensino Fundamental">Ensino Fundamental</option>
+                                <option value="Ensino Médio">Ensino Médio</option>
+                                <option value="BNCC">BNCC</option>
+                                <option value="Inglês">Inglês</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Descrição</label>
+                        <textarea id="p-desc" rows="2"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>📸 Imagem do Produto</label>
+                        <input type="file" id="p-image" accept="image/*">
+                        <small style="color:#666; font-size:0.8rem;">(Opcional na edição)</small>
+                    </div>
+
+                    <button type="submit" id="btn-save" class="btn-buy">CADASTRAR PRODUTO</button>
+                    
+                    <button type="button" id="btn-cancel" onclick="cancelEditMode()" style="display:none;">
+                        CANCELAR EDIÇÃO
+                    </button>
+                </form>
+            </div>
+
+            <h3 style="margin-bottom: 15px; color: var(--blue-navy);">Lista de Itens</h3>
+            <div id="admin-product-list">
+                <p style="text-align: center; color: #888;">Carregando...</p>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="./scripts/app.js"></script>
+    <script src="./scripts/script-admin.js"></script>
+</body>
+</html>

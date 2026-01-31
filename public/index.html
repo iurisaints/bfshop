@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja das Profs | Professora Brenda</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="./styles/styles.css">
+</head>
+<body>
+
+    <div class="top-bar">
+        COMO COMPRAR? &nbsp;|&nbsp; FAQ & FALE CONOSCO &nbsp;|&nbsp; MATERIAIS BNCC
+    </div>
+
+    <header class="main-header">
+        <div class="header-content">
+            <div class="brand-group">
+                <div class="logo-circle">BF</div>
+                <div class="titles">
+                    <h1>Professora<br>Brenda</h1>
+                </div>
+            </div>
+
+            <div class="nav-actions">
+                <div id="user-nav" style="display:flex; align-items:center; gap:15px;">
+                    </div>
+
+                <div class="cart-icon-container" onclick="toggleCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cart-count" class="cart-badge">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="filters-section">
+            <button class="btn-toggle-filters" onclick="toggleFilterCollapse()">
+                <i class="fas fa-filter"></i> Filtrar Materiais
+            </button>
+            <div id="filter-container" class="filter-collapse">
+                <button class="cat-btn active" onclick="filterCategory('Todas')">Todas</button>
+                <button class="cat-btn" onclick="filterCategory('Ensino Fundamental')">Fundamental</button>
+                <button class="cat-btn" onclick="filterCategory('Ensino Médio')">Ensino Médio</button>
+                <button class="cat-btn" onclick="filterCategory('Inclusão')">Inclusão</button>
+                <button class="cat-btn" onclick="filterCategory('Bilíngue')">Bilíngue</button>
+                <button class="cat-btn" onclick="filterCategory('Experimento')">Experimento</button>
+                <button class="cat-btn" onclick="filterCategory('Pronto para Imprimir')">Pronto para Imprimir</button>
+                <button class="cat-btn" onclick="filterCategory('Ciências')">Ciências</button>
+                <button class="cat-btn" onclick="filterCategory('Inglês')">Inglês</button>
+                <button class="cat-btn" onclick="filterCategory('Colorir')">Colorir</button>
+                <button class="cat-btn" onclick="filterCategory('Recortar e Colar')">Recortar e Colar</button>
+                <button class="cat-btn" onclick="filterCategory('Construir')">Construir</button>
+                <button class="cat-btn" onclick="filterCategory('BNCC')">BNCC</button>
+            </div>
+        </section>
+
+        <h2 style="color:var(--blue-navy); margin-bottom:20px;">Destaques</h2>
+
+        <div id="products-container" class="products-grid">
+            <div style="grid-column: 1/-1; text-align:center; padding: 50px;">
+                <i class="fas fa-spinner fa-spin" style="font-size: 2rem; color: var(--blue-navy);"></i>
+                <p>Carregando...</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>© 2026 Professora Brenda Flores. Todos os direitos reservados.</p>
+        <p style="font-size:0.75rem; margin-top:5px;">Desenvolvido com tecnologia segura.</p>
+    </footer>
+
+    <nav class="bottom-nav">
+        <div class="bottom-nav-content">
+            <a href="index.html" class="nav-item active">
+                <i class="fas fa-store"></i>
+                <span>Loja</span>
+            </a>
+            <a href="favoritos.html" class="nav-item">
+                <i class="far fa-heart"></i>
+                <span>Favoritos</span>
+            </a>
+            <a href="#" class="nav-item" onclick="toggleCart()">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Carrinho</span>
+            </a>
+            <a href="meus-pedidos.html" class="nav-item">
+                <i class="fas fa-download"></i>
+                <span>Baixar</span>
+            </a>
+        </div>
+    </nav>
+
+    <div id="cart-modal" class="cart-modal-overlay">
+        <div class="cart-modal" onclick="event.stopPropagation()">
+            <div style="padding:20px; background:var(--blue-navy); color:white; display:flex; justify-content:space-between; align-items:center;">
+                <h3>Seu Carrinho</h3>
+                <button onclick="toggleCart()" style="background:none; border:none; color:white; font-size:1.5rem; cursor:pointer;">&times;</button>
+            </div>
+            <div id="cart-items-container" style="flex:1; padding:20px; overflow-y:auto;"></div>
+            <div style="padding:20px; border-top:1px solid #eee;">
+                <div style="display:flex; justify-content:space-between; font-weight:bold; font-size:1.2rem; margin-bottom:15px;">
+                    <span>Total:</span>
+                    <span id="cart-total-value">R$ 0,00</span>
+                </div>
+                <button id="btn-checkout-final" class="btn-buy" onclick="checkoutCart()">FINALIZAR COMPRA</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="product-detail-modal" class="modal-overlay" onclick="closeProductModal(event)">
+        <div class="product-modal-content">
+            <button class="close-modal-btn">&times;</button>
+            <div class="pm-layout">
+                <div class="pm-image"><img id="pm-img" src=""></div>
+                <div class="pm-info">
+                    <h2 id="pm-title"></h2>
+                    <p id="pm-desc" style="color:#666; margin-bottom:20px;"></p>
+                    <div id="pm-price" style="font-size:2rem; color:var(--red-bordo); font-weight:bold; margin-bottom:20px;"></div>
+                    <button id="pm-add-btn" class="btn-buy" style="padding:15px; font-size:1rem;">ADICIONAR AO CARRINHO</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./scripts/app.js"></script>
+    <script src="./scripts/cart.js"></script>
+</body>
+</html>

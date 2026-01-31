@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Pedidos | Professora Brenda</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="./styles/styles.css">
+</head>
+
+<body>
+
+    <header class="main-header">
+        <div class="header-content">
+            <a href="index.html" class="brand-group">
+                <div class="logo-circle">BF</div>
+                <div class="titles">
+                    <h1>Professora<br>Brenda</h1>
+                </div>
+            </a>
+
+            <div class="nav-actions">
+                <div id="user-nav">
+                </div>
+                <div class="cart-icon-container" onclick="toggleCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cart-count" class="cart-badge">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div style="margin: 40px 0 30px 0; border-bottom: 1px solid #e2e8f0; padding-bottom: 15px;">
+            <h2 style="color:var(--blue-navy); font-size:1.8rem; display:flex; align-items:center; gap:10px;">
+                <i class="fas fa-box-open" style="color:var(--red-bordo);"></i> Meus Pedidos
+            </h2>
+            <p style="color:#64748b; margin-top:5px;">Acesse e baixe seus materiais digitais.</p>
+        </div>
+
+        <div id="orders-list">
+            <p style="text-align:center; padding:40px; color:#888;">
+                <i class="fas fa-spinner fa-spin"></i> Carregando seus pedidos...
+            </p>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>© 2026 Professora Brenda Flores. Todos os direitos reservados.</p>
+    </footer>
+
+    <nav class="bottom-nav">
+        <div class="bottom-nav-content">
+            <a href="index.html" class="nav-item">
+                <i class="fas fa-store"></i><span>Loja</span>
+            </a>
+            <a href="favoritos.html" class="nav-item">
+                <i class="far fa-heart"></i><span>Favoritos</span>
+            </a>
+            <a href="#" class="nav-item" onclick="toggleCart()">
+                <i class="fas fa-shopping-cart"></i><span>Carrinho</span>
+            </a>
+            <a href="meus-pedidos.html" class="nav-item active">
+                <i class="fas fa-download"></i><span>Baixar</span>
+            </a>
+        </div>
+    </nav>
+
+    <div id="cart-modal" class="cart-modal-overlay">
+        <div class="cart-modal" onclick="event.stopPropagation()">
+
+            <div
+                style="padding:20px; background:var(--blue-navy); color:white; display:flex; justify-content:space-between; align-items:center;">
+                <h3>Seu Carrinho</h3>
+                <button onclick="toggleCart()"
+                    style="background:none; border:none; color:white; font-size:1.5rem; cursor:pointer;">&times;</button>
+            </div>
+
+            <div id="cart-items-container" style="flex:1; padding:20px; overflow-y:auto;"></div>
+
+            <div style="padding:20px; border-top:1px solid #eee;">
+                <div
+                    style="display:flex; justify-content:space-between; font-weight:bold; font-size:1.2rem; margin-bottom:15px;">
+                    <span>Total:</span>
+                    <span id="cart-total-value">R$ 0,00</span>
+                </div>
+
+                <button id="btn-checkout-final" class="btn-buy" onclick="checkoutCart()">FINALIZAR COMPRA</button>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="./scripts/app.js"></script>
+    <script src="./scripts/cart.js"></script>
+    <script src="./scripts/script-pedidos.js"></script>
+</body>
+
+</html>

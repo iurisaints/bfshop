@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Conta | Professora Brenda</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="./styles/styles.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-content" style="justify-content: center;">
+            <a href="index.html" class="brand-group">
+                <div class="logo-circle">BF</div>
+                <div class="titles">
+                    <h1>Professora<br>Brenda</h1>
+                </div>
+            </a>
+        </div>
+    </header>
+
+    <main class="container auth-container">
+        <div class="auth-box animate-up">
+            <div class="auth-header">
+                <h2>Crie sua conta</h2>
+                <p>Junte-se a nós para acessar materiais exclusivos.</p>
+            </div>
+
+            <form id="register-form" onsubmit="handleRegister(event)">
+                
+                <div class="form-group">
+                    <label for="reg-name"><i class="far fa-user"></i> Nome Completo</label>
+                    <input type="text" id="reg-name" placeholder="Como você quer ser chamado?" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="reg-email"><i class="far fa-envelope"></i> E-mail</label>
+                    <input type="email" id="reg-email" placeholder="seu@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="reg-password"><i class="fas fa-lock"></i> Senha</label>
+                    <input type="password" id="reg-password" placeholder="Crie uma senha forte" required minlength="6">
+                </div>
+
+                <div class="form-group">
+                    <label for="reg-confirm-password"><i class="fas fa-lock"></i> Confirmar Senha</label>
+                    <input type="password" id="reg-confirm-password" placeholder="Digite a senha novamente" required>
+                </div>
+
+                <button type="submit" id="btn-register" class="btn-buy btn-full">
+                    CRIAR MINHA CONTA
+                </button>
+            </form>
+
+            <div class="auth-footer">
+                Já tem uma conta? <a href="login.html">Faça Login</a>.
+            </div>
+        </div>
+    </main>
+
+    <script src="./scripts/app.js"></script>
+    <script src="./scripts/script-cadastro.js"></script>
+</body>
+</html>

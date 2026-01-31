@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Professora Brenda</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="./styles/styles.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-content" style="justify-content: center;">
+            <a href="index.html" class="brand-group">
+                <div class="logo-circle">BF</div>
+                <div class="titles">
+                    <h1>Professora<br>Brenda</h1>
+                </div>
+            </a>
+        </div>
+    </header>
+
+    <main class="container auth-container">
+        <div class="auth-box animate-up">
+            <div class="auth-header">
+                <h2>Bem-vindo(a) de volta!</h2>
+                <p>Acesse sua conta para baixar seus materiais.</p>
+            </div>
+
+            <form id="login-form" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label for="email"><i class="far fa-envelope"></i> E-mail</label>
+                    <input type="email" id="email" placeholder="seunome@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password"><i class="fas fa-lock"></i> Senha</label>
+                    <input type="password" id="password" placeholder="Sua senha secreta" required>
+                </div>
+
+                <button type="submit" class="btn-buy btn-full">
+                    ENTRAR NA MINHA CONTA
+                </button>
+            </form>
+
+            <div class="auth-footer">
+                Ainda não tem uma conta? <a href="cadastro.html">Cadastre-se aqui</a>.
+            </div>
+        </div>
+    </main>
+
+    <script src="./scripts/app.js"></script>
+    <script src="./scripts/script-login.js"></script>
+    </body>
+</html>
